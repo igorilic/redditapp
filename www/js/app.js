@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('myreddit', ['ionic'])
+    .module('myreddit', ['ionic', 'angularMoment'])
 
     .run(function($ionicPlatform) {
       $ionicPlatform.ready(function() {

@@ -14,6 +14,8 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/moment/moment.js"></script>
+    <script src="lib/angular-moment/angular-moment.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
@@ -33,7 +35,11 @@
           <a href="{{story.url}}" target="_blank" class="item item-thumbnail-left" ng-repeat="story in vm.stories">
             <img ng-src="{{story.thumbnail}}" ng-if="story.thumbnail.startsWith('http')">
             <h2 class="story-title">{{story.title}}</h2>
-            <p>{{story.domain}}</p>
+            <p>
+              <span am-time-ago="story.created_utc | amFromUnix"></span>
+              -
+              {{story.domain}}
+            </p>
           </a>
         </ul>
       </ion-content>
