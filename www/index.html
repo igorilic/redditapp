@@ -31,8 +31,12 @@
         <h1 class="title">My Reddit</h1>
       </ion-header-bar>
       <ion-content>
-        <ul class="list">
-          <a href="{{story.url}}" target="_blank" class="item item-thumbnail-left" ng-repeat="story in vm.stories">
+        <ion-refresher
+           pulling-text="Pull to refresh..."
+           on-refresh="vm.doRefresh()">
+        </ion-refresher>
+        <ion-list>
+          <a href="{{story.url}}" target="_blank" class="item item-thumbnail-left" ng-repeat="story in vm.stories track by story.id">
             <img ng-src="{{story.thumbnail}}" ng-if="story.thumbnail.startsWith('http')">
             <h2 class="story-title">{{story.title}}</h2>
             <p>
@@ -41,7 +45,9 @@
               {{story.domain}}
             </p>
           </a>
-        </ul>
+        </ion-list>
+        <ion-infinite-scroll on-infinite="vm.loadMore()" distance="1%">
+        </ion-infinite-scroll>
       </ion-content>
     </ion-pane>
   </body>
