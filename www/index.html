@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src: 'self' 'unsafe-inline' 'unsafe-eval'">
     <title></title>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
@@ -36,7 +37,7 @@
            on-refresh="vm.doRefresh()">
         </ion-refresher>
         <ion-list>
-          <a href="{{story.url}}" target="_blank" class="item item-thumbnail-left" ng-repeat="story in vm.stories track by story.id">
+          <a ng-click="vm.openLink(story.url)" class="item item-thumbnail-left" ng-repeat="story in vm.stories track by story.id">
             <img ng-src="{{story.thumbnail}}" ng-if="story.thumbnail.startsWith('http')">
             <h2 class="story-title">{{story.title}}</h2>
             <p>

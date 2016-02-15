@@ -10,7 +10,12 @@
     vm.stories = [];
     vm.loadMore = loadMore;
     vm.doRefresh = doRefresh;
+    vm.openLink = openLink;
     ///////////////
+    function openLink(url) {
+      window.open(url, '_blank');
+    }
+
     function loadMore() {
       var params = {};
       if (vm.stories.length > 0) {
